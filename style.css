@@ -31,7 +31,7 @@ body {
 }
 
 header {
-  background-image: url("images/image-hero-desktop.jpg");
+  background: url("images/image-hero-desktop.jpg");
   background-size: cover;
   height: 400px;
 }
@@ -42,6 +42,7 @@ header {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.0001) 100%);
 }
 
 nav {
@@ -76,22 +77,25 @@ main {
   position: relative;
   max-width: 730px;
   margin: -92px auto;
-  background-color: white;
   border-radius: 8px;
-
-  padding: 0 48px;
-
   margin-bottom: 114px;
 }
 
-/* .main-header,
+.main-header,
 .progress-bar,
-.selection {
+.aside-section {
   border: 1px solid var(--the-lightest-gray);
   border-radius: 8px;
-} */
+  padding: 0 48px;
+  background-color: white;
+}
 
-h1 {
+.aside-section {
+  position: relative;
+  left: 35px;
+}
+
+.main-header h1 {
   padding-top: 56px;
   text-align: center;
   font-size: 28px;
@@ -107,12 +111,74 @@ p {
   line-height: 30px;
 }
 
-.main-header p {
-  text-align: center;
+.buttons {
+  margin: 40px 0px 48px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 button {
   cursor: pointer;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  border-radius: 33.5px;
+  color: white;
+}
+
+.bookmark {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 0px;
+  padding-right: 24px;
+}
+
+button svg {
+  margin-right: 16px;
+}
+
+.button-back {
+  background-color: var(--dark-cyan);
+  padding: 18px 40px;
+}
+
+.bookmark {
+  color: var(--dark-gray);
+  background-repeat: no-repeat;
+  background-color: var(--the-lightest-gray);
+}
+
+.bookmarked {
+  color: var(--dark-cyan);
+}
+
+.bookmarked svg circle {
+  fill: var(--dark-cyan);
+}
+
+.bookmark svg path {
+  fill: white;
+}
+
+.bookmarked svg path {
+  fill: white;
+}
+
+.main-header {
+  margin-bottom: 24px;
+}
+
+.progress-bar {
+  margin-bottom: 34px;
+}
+
+.main-header p {
+  text-align: center;
 }
 
 h2 {
@@ -120,6 +186,7 @@ h2 {
   line-height: 25px;
   font-weight: 700;
   margin-bottom: 35px;
+  margin-top: 48px;
 }
 
 .selection {
@@ -167,6 +234,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
+  align-items: center;
 }
 
 .number-left span {
@@ -179,19 +247,12 @@ h3 {
 
 .number-left p {
   vertical-align: text-top;
-  line-height: 18px;
+  line-height: 16px;
 }
 
 .number-left button {
-  outline: none;
-  border: none;
   background-color: var(--moderate-cyan);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
   padding: 15px 32px;
-  border-radius: 33.5px;
-  color: white;
 }
 
 .number-left button:hover {
