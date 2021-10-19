@@ -12,9 +12,7 @@
   /*Figma*/
   --white-background: #f2f2f2;
   --light-gray: rgba(0, 0, 0, 0.15);
-
   --the-lightest-gray: rgba(0, 0, 0, 0.0497193);
-
   --button-opacity: #979797;
   --btn-bookmarked: rgba(20, 122, 115, 0.05);
 }
@@ -31,10 +29,9 @@ body {
   background-color: var(--white-background);
 }
 
-body,
-html {
-  height: 100%;
-  min-height: 100%;
+.container {
+  padding-bottom: 216px;
+  width: 100%;
 }
 
 header {
@@ -85,7 +82,6 @@ main {
   max-width: 730px;
   margin: -92px auto;
   border-radius: 8px;
-  margin-bottom: 114px;
 }
 
 .main-header,
@@ -136,19 +132,6 @@ button {
   color: white;
 }
 
-.bookmark {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  line-height: 20px;
-  padding: 0px;
-  padding-right: 24px;
-}
-
-button svg {
-  margin-right: 16px;
-}
-
 .button-back {
   font-size: 16px;
   line-height: 20px;
@@ -157,9 +140,23 @@ button svg {
 }
 
 .bookmark {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 0px;
+  padding-right: 24px;
   color: var(--dark-gray);
   background-repeat: no-repeat;
   background-color: var(--the-lightest-gray);
+}
+
+button svg {
+  margin-right: 16px;
+}
+
+.bookmark svg path {
+  fill: white;
 }
 
 .bookmarked {
@@ -169,10 +166,6 @@ button svg {
 
 .bookmarked svg circle {
   fill: var(--dark-cyan);
-}
-
-.bookmark svg path {
-  fill: white;
 }
 
 .bookmarked svg path {
@@ -307,6 +300,7 @@ h3 {
 button.out-of-stock,
 button.out-of-stock:hover {
   padding: 15px 38px;
+  font-weight: 500;
   background-color: var(--button-opacity);
   cursor: default;
 }
@@ -316,11 +310,10 @@ button.out-of-stock:hover {
 }
 
 .overlay {
-  /* DOBRO AKO JE BODY*/
   background-color: #000000;
   mix-blend-mode: normal;
   opacity: 0.5;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -329,37 +322,168 @@ button.out-of-stock:hover {
   z-index: 5;
 }
 
-/*TODO: add to body when modal success*/
-.overflow {
-  overflow: hidden;
+.modal {
+  position: fixed;
+  background-color: white;
+  padding: 48px;
+  border-radius: 8px;
+  z-index: 10;
 }
 
-/*
-header,
-body:not(.success-modal),
-div:not(.success-modal),
-*:not(.success-modal, .success-modal p, .success-modal h1, .success-modal img) {
-  /* background-color: #000;
-  mix-blend-mode: normal;*/
-/* opacity: 0.5; */
-/* background: pink; */
-/* background: #000; */
-/* background: #000;
-  mix-blend-mode: normal;*/
-/* background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.0001) 100%);
-  backdrop-filter: blur(3px); */
+.modal h1 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+/*-------------------------------*/
+/*SELECTION MODAL*/
+.selection-modal {
+  position: absolute;
+  top: 184px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 730px;
+  text-align: left;
+}
+
+.close-img svg path {
+  opacity: 1;
+}
+
+.close-img {
+  position: absolute;
+  cursor: pointer;
+  left: 684px;
+}
+.selection-modal h1 {
+  margin-bottom: 16px;
+}
+
+.selection-modal p {
+  margin-bottom: 32px;
+  padding: 0px 28px 0 28px;
+}
+
+.selection-modal > p {
+  margin-bottom: 32px;
+  padding-left: 0;
+}
+
+.selection-modal .number-left {
+  margin: 0;
+  vertical-align: center;
+  justify-content: flex-end;
+}
+
+.selection-modal .number-left p {
+  font-size: 15px;
+  line-height: 18px;
+  margin: 0;
+}
+
+.selection-modal .choice {
+  justify-items: space-;
+  padding: 0;
+}
+
+.selection-modal .number-left {
+  flex: 2;
+}
+
+.selection-modal h3 {
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.selection-modal h3:hover {
+  color: var(--moderate-cyan);
+}
+
+.selection-modal .choice.out-of-stock h3:hover {
+  color: inherit;
+  cursor: default;
+}
+
+.selection-modal .big-number {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.selection-modal .choice-title {
+  align-items: center;
+  margin-bottom: 17px;
+  padding: 32px 28px 0 28px;
+}
+
+.enter-pledge {
+  margin-top: 32px;
+  padding-top: 24px;
+  display: flex;
+  border-top: 1px solid var(--light-gray);
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.visibility {
+  display: none;
+}
+
+.enter-pledge p {
+  flex: 2;
+  margin-bottom: 0;
+}
+
+.selection-modal button {
+  background-color: var(--moderate-cyan);
+  font-weight: 500;
+  padding: 15px 24px;
+  font-size: 14px;
+  line-height: 17px;
+  margin-right: 28px;
+}
+
+input {
+  border-radius: 33.5px;
+  margin-right: 16px;
+  padding: 15px 24px 16px 24px;
+  outline: none;
+  border: 1px solid var(--light-gray);
+  width: 100px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.input-dolar {
+  position: relative;
+}
+
+.input-dolar:before {
+  position: absolute;
+  top: 0;
+  content: "$";
+  font-size: 14px;
+  font-weight: 700;
+  /* color: var(--light-gray); */
+  left: 24px;
+  opacity: 0.25;
+
+  line-height: 17px;
+}
+
+.input-dolar input {
+  padding-left: 41px;
+}
+
+/*-------------------------------*/
+/*SUCCESS MODAL*/
 
 .success-modal {
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 540px;
-  background-color: white;
-  padding: 48px;
   text-align: center;
-  border-radius: 8px;
-  z-index: 10;
 }
 
 .success-modal img {
@@ -368,8 +492,6 @@ div:not(.success-modal),
 
 .success-modal h1 {
   margin-top: 48px;
-  font-size: 24px;
-  line-height: 30px;
   margin-bottom: 16px;
   text-align: center;
 }
@@ -387,9 +509,33 @@ div:not(.success-modal),
   padding: 15px 32px;
 }
 
+.enter-pledge button:hover {
+  background-color: var(--dark-cyan);
+}
+
+button.out-of-stock,
+button.out-of-stock:hover {
+  padding: 15px 32px;
+  font-weight: 500;
+  background-color: var(--button-opacity);
+  cursor: default;
+}
+
+/*-------------------------------*/
+
 @media screen and (max-width: 1020px) {
   .nav-logo {
     max-width: 690px;
     padding: 50px 0px 0px 0px;
   }
+}
+
+@media screen and (max-width: 830px) {
+  .aside-section {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 750) {
+  /*TODO:*/
 }
