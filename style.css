@@ -16,6 +16,7 @@
   --the-lightest-gray: rgba(0, 0, 0, 0.0497193);
 
   --button-opacity: #979797;
+  --btn-bookmarked: rgba(20, 122, 115, 0.05);
 }
 
 * {
@@ -82,7 +83,7 @@ main {
 }
 
 .main-header,
-.progress-bar,
+.progress-bar-section,
 .aside-section {
   border: 1px solid var(--the-lightest-gray);
   border-radius: 8px;
@@ -143,6 +144,8 @@ button svg {
 }
 
 .button-back {
+  font-size: 16px;
+  line-height: 20px;
   background-color: var(--dark-cyan);
   padding: 18px 40px;
 }
@@ -155,6 +158,7 @@ button svg {
 
 .bookmarked {
   color: var(--dark-cyan);
+  background: var(--btn-bookmarked);
 }
 
 .bookmarked svg circle {
@@ -173,12 +177,48 @@ button svg {
   margin-bottom: 24px;
 }
 
-.progress-bar {
+.progress-bar-section {
+  padding: 40px 59px 57px 37px;
   margin-bottom: 34px;
 }
 
-.main-header p {
-  text-align: center;
+.progress-bar-info {
+  display: flex;
+  gap: 47px;
+  color: var(--dark-gray);
+  font-size: 15px;
+}
+
+.progres-item {
+  width: 28.3%;
+  border-right: 1px solid var(--light-gray);
+  margin-bottom: 37px;
+}
+
+.progres-item:last-child {
+  border-right: 0px;
+}
+
+.progres-item .big-number {
+  padding-bottom: 8px;
+}
+
+.progress-chart {
+  background-color: var(--the-lightest-gray);
+  border-radius: 33.5px;
+}
+
+.progress-chart div {
+  background-color: var(--moderate-cyan);
+  width: 89.914%;
+  height: 12px;
+  border-radius: 33.5px;
+}
+
+.big-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--black);
 }
 
 h2 {
@@ -192,8 +232,6 @@ h2 {
 .selection {
   margin-top: 40px;
   padding-bottom: 48px;
-  /* position: relative;
-  left: 35px; */
 }
 
 .choice {
@@ -238,10 +276,7 @@ h3 {
 }
 
 .number-left span {
-  font-size: 32px;
-  font-weight: 700;
   margin-right: 8px;
-  color: var(--black);
   vertical-align: text-top;
 }
 
