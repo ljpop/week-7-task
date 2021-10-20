@@ -4,7 +4,7 @@
 const BACKED_MAX = 100000;
 
 const btn_back = document.querySelector('.button-back');
-const success_modal = document.querySelector('.sucsess-modal');
+const success_modal = document.querySelector('.success-modal');
 const selection_modal = document.querySelector('.selection-modal');
 const overlay = document.querySelector('.overlay');
 const exit = document.querySelector('.close-img');
@@ -19,6 +19,7 @@ const labelWidth = document.querySelector(".progress-width");
 
 const btnBookmark = document.querySelector('.bookmark ');
 const btnText = document.querySelector('.btnText');
+const btn_gotIt = document.querySelector('.btnGotIt')
 
 
 let total_backed = 89914;
@@ -41,6 +42,13 @@ const closeSelectionModal = function() {
     overlay.classList.add('hidden');
 }
 
+const closeSuccessModal = function() {
+    success_modal.classList.add('hidden');
+    overlay.classList.add('hidden');
+    btnBookmark.classList.add('bookmarked');
+    btnText.textContent = 'Bookmarked';
+}
+
 /*TODO:*/
 const openSuccessModal = function() {
     success_modal.classList.remove('hidden');
@@ -55,6 +63,16 @@ document.addEventListener('keydown', function(e) {
         if (!selection_modal.classList.contains('hidden')) closeSelectionModal();
     }
 });
+
+btn_gotIt.addEventListener('click', closeSuccessModal);
+overlay.addEventListener('click', closeSuccessModal);
+document.addEventListener('keydown', function(e) {
+    if (e.code === 'Escape') {
+        if (!selection_modal.classList.contains('hidden')) closeSuccessModal();
+    }
+});
+
+
 
 
 /*------------------------------------*/

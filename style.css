@@ -384,6 +384,11 @@
         padding: 0;
         position: relative;
     }
+    
+    .selection-modal .choice.active {
+        /*TODO: add this class to active checkbox*/
+        border: 2px solid var(--moderate-cyan);
+    }
     /*------------------------------------------*/
     /* The radio-content */
     
@@ -419,7 +424,8 @@
     /* On mouse-over, add a grey background color */
     
     .radio-content:hover input~.checkmark {
-        background-color: var(--the-lightest-gray);
+        /* background-color: var(--the-lightest-gray); */
+        border: 1px solid var(--moderate-cyan);
     }
     /* When the radio button is checked, add a blue background */
     
@@ -453,6 +459,11 @@
         cursor: default;
     }
     
+    .radio-content.out-of-stock:hover input~.checkmark {
+        /* background-color: var(--the-lightest-gray); */
+        border: 1px solid var(--light-gray);
+    }
+    
     .radio-content.out-of-stock .checkmark:after {
         background: white;
     }
@@ -469,6 +480,14 @@
     
     .selection-modal h3:hover {
         color: var(--moderate-cyan);
+    }
+    
+    .radio-content:hover .pledge {
+        font-weight: 700;
+    }
+    
+    .radio-content.out-of-stock:hover .pledge {
+        font-weight: 500;
     }
     
     .selection-modal .choice.out-of-stock h3:hover {
@@ -497,7 +516,7 @@
     }
     
     .visibility {
-        display: none;
+        /* display: none; */
     }
     
     .enter-pledge p {
@@ -524,6 +543,16 @@
         font-weight: 700;
         font-size: 14px;
         line-height: 17px;
+        cursor: pointer;
+    }
+    
+    .choice.active input {
+        border: 1px solid var(--moderate-cyan);
+    }
+    
+    .choice.active .choice.out-of-stock input:hover {
+        border: 1px solid var(--light-gray);
+        cursor: default;
     }
     
     .input-dolar {
@@ -576,6 +605,10 @@
     .success-modal button {
         background-color: var(--moderate-cyan);
         padding: 15px 32px;
+    }
+    
+    .success-modal button:hover {
+        background-color: var(--dark-cyan);
     }
     
     .enter-pledge button:hover {
