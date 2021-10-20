@@ -627,6 +627,10 @@
         background-color: var(--button-opacity);
         cursor: default;
     }
+    
+    .btn-mobile {
+        display: none;
+    }
     /*-------------------------------*/
     
     @media screen and (max-width: 1020px) {
@@ -642,6 +646,66 @@
         }
     }
     
-    @media screen and (max-width: 750) {
-        /*TODO:*/
+    @media screen and (max-width: 750px) {
+        header {
+            background: url("images/image-hero-mobile.jpg");
+            background-position: center;
+            height: 300px;
+        }
+        .nav-logo {
+            padding: 32px 0px 0px 0px;
+            margin: 0 24px;
+        }
+        .menu {
+            display: none;
+        }
+        .logo-m {
+            left: 222px;
+        }
+        main {
+            max-width: 500px;
+        }
+        .main-header h1 {
+            font-size: 20px;
+            line-height: 24px;
+            padding: 52px 12px 0px 12px;
+        }
+        .main-header {
+            padding: 0 24px;
+        }
+        .main-header p {
+            font-size: 14px;
+            line-height: 24px;
+            text-align: center;
+        }
+        .buttons {
+            margin-top: 24px;
+            gap: 9px;
+            flex: 1;
+        }
+        .button-back {
+            font-size: 15px;
+            padding: 17px 42px;
+        }
+        button svg {
+            margin-right: 20px;
+        }
+        .btn-mobile {
+            display: block;
+        }
+        .bookmark {
+            display: none;
+        }
+    }
+    
+    @media screen and (max-width: 550px) {
+        main {
+            max-width: 327px;
+        }
+        .logo-m {
+            left: 135px;
+        }
+        button svg {
+            margin-right: 0px;
+        }
     }
