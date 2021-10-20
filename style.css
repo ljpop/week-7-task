@@ -431,6 +431,7 @@
     
     .radio-content input:checked~.checkmark {
         background-color: white;
+        border: 1px solid var(--light-gray);
     }
     /* Create the indicator (the dot/circle - hidden when not checked) */
     
@@ -516,7 +517,7 @@
     }
     
     .visibility {
-        /* display: none; */
+        display: none;
     }
     
     .enter-pledge p {
@@ -548,6 +549,10 @@
     
     .choice.active input {
         border: 1px solid var(--moderate-cyan);
+    }
+    
+    .choice.active .pledge {
+        font-weight: 700;
     }
     
     .choice.active .choice.out-of-stock input:hover {
