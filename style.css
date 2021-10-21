@@ -518,8 +518,13 @@
                     }
                     
                     .enter-pledge p {
-                        flex: 2;
+                        flex: 1;
                         margin-bottom: 0;
+                    }
+                    
+                    .enter-flex {
+                        display: flex;
+                        flex-direction: row;
                     }
                     
                     .selection-modal button {
@@ -628,6 +633,10 @@
                     .btn-mobile {
                         display: none;
                     }
+                    
+                    .number-left-mob {
+                        display: none;
+                    }
                     /*-------------------------------*/
                     
                     @media screen and (max-width: 1020px) {
@@ -703,11 +712,59 @@
                         .close-img {
                             left: 434px;
                         }
+                        .selection-modal .number-left {
+                            display: none;
+                        }
+                        .number-left p {
+                            font-size: 15px;
+                            line-height: 18px;
+                            margin: 0;
+                        }
+                        .number-left-mob {
+                            display: block;
+                        }
+                        .number-left-mob p {
+                            display: block;
+                            font-size: 15px;
+                            line-height: 18px;
+                        }
+                        .number-left-mob .big-number {
+                            margin-right: 8px;
+                            ;
+                        }
+                        .selection-modal .choice-title {
+                            flex-direction: column;
+                            /* padding-left: 16px; */
+                            align-items: flex-start
+                        }
+                        .enter-pledge {
+                            flex-direction: column;
+                        }
+                        .enter-flex {
+                            display: flex;
+                            flex-direction: row;
+                            width: 100%;
+                            justify-content: center
+                        }
+                        .selection-modal button {
+                            margin-right: 0;
+                        }
+                        .enter-pledge p {
+                            margin-bottom: 16px;
+                            padding-left: 0;
+                            padding-right: 0;
+                        }
+                        .success-modal {
+                            max-width: 500px;
+                        }
                     }
                     
                     @media screen and (max-width: 550px) {
                         .selection-modal {
                             width: 327px;
+                        }
+                        .success-modal {
+                            max-width: 327px;
                         }
                         .close-img {
                             left: 288px;
@@ -827,9 +884,52 @@
                             padding-left: 24px;
                         }
                         .selection-modal .choice-title {
-                            padding-top: 33px;
+                            padding-top: 24px;
+                            padding-left: 64px;
+                        }
+                        .selection-modal .choice-title h3 {
+                            margin-left: 0;
+                        }
+                        .special-title {
+                            margin-top: 10px;
                         }
                         .checkmark {
-                            top: 33px;
+                            top: 32px;
+                        }
+                        .radio-content {
+                            padding-left: 0px;
+                        }
+                        .radio-content p {
+                            padding: 0px 24px 0 24px;
+                            line-height: 24px;
+                        }
+                        .radio-content h3 {
+                            margin-left: 16px;
+                        }
+                        .checkmark {
+                            left: 24px;
+                        }
+                        .enter-pledge p {
+                            margin-bottom: 16px;
+                            padding-left: 0;
+                        }
+                        .success-modal {
+                            padding: 24px;
+                        }
+                        .success-modal h1 {
+                            margin: 24px 0px 24px 0;
+                            font-size: 18px;
+                            line-height: 22px;
+                        }
+                        .success-modal img {
+                            width: 64px;
+                            height: 64px;
+                        }
+                        .success-modal p {
+                            font-size: 14px;
+                            line-height: 24px;
+                        }
+                        .success-modal button {
+                            margin-bottom: 16px;
                         }
                     }
