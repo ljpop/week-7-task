@@ -18,6 +18,7 @@ const labelMahagonyLeft = document.querySelectorAll('.mahagony-left');
 const labelWidth = document.querySelector(".progress-width");
 
 const btnBookmark = document.querySelector('.bookmark ');
+const btnMobile = document.querySelector('.btn-mobile')
 const btnText = document.querySelector('.btnText');
 const btn_gotIt = document.querySelector('.btnGotIt')
 
@@ -82,6 +83,10 @@ btnBookmark.addEventListener('click', function() {
     if (btnBookmark.classList.contains('bookmarked'))
         btnText.textContent = 'Bookmarked';
     else btnText.textContent = 'Bookmark';
+});
+
+btnMobile.addEventListener('click', function() {
+    btnMobile.classList.toggle('bookmarked-mob');
 });
 
 /*------------------------------------*/
