@@ -20,7 +20,16 @@ const labelWidth = document.querySelector(".progress-width");
 const btnBookmark = document.querySelector('.bookmark ');
 const btnMobile = document.querySelector('.btn-mobile')
 const btnText = document.querySelector('.btnText');
-const btn_gotIt = document.querySelector('.btnGotIt')
+const btn_gotIt = document.querySelector('.btnGotIt');
+
+const btn_menu = document.querySelector('.menu-mob');
+const menu_img = document.querySelector('.menu-img');
+const exit_menu = document.querySelector('.close-menu');
+const overlay_menu = document.querySelector('.overlay-mobile');
+
+const menu_modal = document.querySelector('.menu-modal')
+
+const logo_big = document.querySelector('.logo-big');
 
 
 let total_backed = 89914;
@@ -50,6 +59,21 @@ const closeSuccessModal = function() {
     btnText.textContent = 'Bookmarked';
 }
 
+const openMenu = function() {
+    menu_modal.classList.remove('hidden');
+    overlay_menu.classList.remove('hidden');
+    menu_img.classList.add('hidden');
+    logo_big.classList.add('unvisible');
+}
+
+const closeMenu = function() {
+    menu_modal.classList.add('hidden');
+    overlay_menu.classList.add('hidden');
+    menu_img.classList.remove('hidden');
+
+    logo_big.classList.remove('unvisible');
+}
+
 /*TODO:*/
 const openSuccessModal = function() {
     success_modal.classList.remove('hidden');
@@ -73,6 +97,14 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+btn_menu.addEventListener('click', openMenu);
+exit_menu.addEventListener('click', closeMenu);
+overlay_menu.addEventListener('click', closeMenu);
+document.addEventListener('keydown', function(e) {
+    if (e.code === 'Escape') {
+        if (!menu_modal.classList.contains('hidden')) closeMenu();
+    }
+});
 
 
 
