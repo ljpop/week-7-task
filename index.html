@@ -132,39 +132,40 @@
             <h1>Back this project</h1>
             <p> Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
 
-            <div class='choice'>
-                <label class="radio-content"><div class='choice-title'>
-                        <h3 class='special-title'>Pledge with no reward</h3>
+            <div class='choice noreward-div'>
+                <label class="radio-content">
+                    <div class='choice-title '>
+                        <h3 class='special-title '>Pledge with no reward</h3>
                     </div>
                     <p>Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.</p>  
 
-                        <input type="radio" id="radio-btn" name="radio">
-                        <span class="checkmark"></span>  
+                        <input type="radio" id="radio-btn" name="radio" value='noreward'>
+                        <span class="checkmark noreward-check"></span>  
                  </label>
 
-                <div class='visibility'>
-                    <div class='enter-pledge'>
+                <div class='noreward visibility '>
+                    <div class='enter-pledge '>
                         <p> Enter your pledge</p>
-                        <div class='enter-flex'>
+                        <div class='enter-flex '>
                             <div>
-                                <form><span class='input-dolar'><input  type="text" placeholder="1"> </span></form>
+                                <form onsubmit="preventRefresh(event)"><span class='input-dolar '><input  class='amount-input input-noreward' type="text" placeholder="1"> </span></form>
                             </div>
                             <div>
-                                <button class='continue'>Continue </button></div>
+                                <button class='continue noreward-btn'>Continue </button></div>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class='choice'>
+            <div class='choice bamboo-div '>
                 <label class="radio-content">
-                    <div class='choice-title'>
+                    <div class='choice-title '>
                     <h3>Bamboo Stand</h3>
-                    <div class='pledge'>
+                    <div class='pledge '>
                         Pledge $25 or more</div>
-                        <div class='number-left'>
-                            <p><span class='big-number bambo-left'>101</span>left</p>
+                        <div class='number-left '>
+                            <p><span class='big-number bambo-left '>101</span>left</p>
                         </div>
                 </div>
                 <p>You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list. </p>
@@ -172,26 +173,26 @@
                     <p><span class='big-number bambo-left'>101</span>left</p>
                 </div>
 
-                    <input type="radio" id="radio-btn" name="radio">
-                    <span class="checkmark"></span>  
-             </label>
+                <input type="radio" id="radio-btn" name="radio" value='bamboo'>
+                <span class="checkmark bamboo-check"></span>
+                </label>
 
-                <div class='visibility'>
+                <div class='bamboo visibility'>
                     <div class='enter-pledge'>
                         <p> Enter your pledge</p>
                         <div class='enter-flex'>
                             <div>
-                                <form><span class='input-dolar'><input  type="text" placeholder="25"> </span></form>
+                                <form onsubmit="preventRefresh(event)"><span class='input-dolar'><input class='amount-input input-bamboo' type="text" placeholder="25"> </span></form>
                             </div>
                             <div>
-                                <button class='continue'>Continue </button></div>
+                                <button class='continue bamboo-btn'>Continue </button></div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- <div class='choice active'> -->
-            <div class='choice '>
+            <div class='choice black-div '>
                 <label class="radio-content">
                     <div class='choice-title'>
                     <h3> Black Edition Stand</h3>
@@ -206,24 +207,24 @@
                     <p><span class='big-number black-left'>64</span>left</p>
                 </div>
 
-                    <input type="radio" id="radio-btn" name="radio">
-                    <span class="checkmark"></span>  
+                    <input type="radio" id="radio-btn" name="radio"  value='black'>
+                    <span class="checkmark black-check"></span>  
              </label>
-                <div class='visibility'>
+                <div class='black visibility'>
                     <div class='enter-pledge'>
                         <p> Enter your pledge</p>
                         <div class='enter-flex'>
                             <div>
-                                <form><span class='input-dolar'><input  type="text" placeholder="75"> </span></form>
+                                <form onsubmit="preventRefresh(event)"><span class='input-dolar'><input class='amount-input input-black'  type="text" placeholder="75"> </span></form>
                             </div>
                             <div>
-                                <button class='continue'>Continue </button></div>
+                                <button class='continue black-btn'>Continue </button></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class='choice out-of-stock'>
+            <div class='choice out-of-stock mahagony-div'>
 
                 <label class="radio-content out-of-stock"><div class='choice-title'>
                     <h3> Mahogany Special Edition</h3>
@@ -238,18 +239,18 @@
                     <p><span class='big-number mahagony-left'>0</span>left</p>
                 </div>
 
-                    <input type="radio" id="radio-btn" name="radio">
-                    <span class="checkmark"></span>  
+                    <input type="radio" id="radio-btn" name="radio" value='mahagony'>
+                    <span class="checkmark mahagony-check"></span>  
              </label>
-                <div class='visibility'>
+                <div class='mahagony visibility'>
                     <div class='enter-pledge'>
                         <p> Enter your pledge</p>
                         <div class='enter-flex'>
                             <div>
-                                <form><span class='input-dolar'><input  type="text" placeholder="200"> </span></form>
+                                <form onsubmit="preventRefresh(event)"><span class='input-dolar'><input class='amount-input input-mahagony' type="text" placeholder="200"> </span></form>
                             </div>
                             <div>
-                                <button class='continue'>Continue </button></div>
+                                <button class='continue mahagony-btn'>Continue </button></div>
                         </div>
                     </div>
 
@@ -261,7 +262,7 @@
         <!-- Selection modal end -->
 
         <!-- Success modal start -->
-        <div class='success-modal modal hidden '>
+        <div class='success-modal modal hidden  '>
             <img src="images/icon-check.svg" alt="success">
             <h1>Thanks for your support!</h1>
             <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed.</p>
