@@ -36,6 +36,9 @@ const logo_big = document.querySelector(".logo-big");
 
 const rbs = document.querySelectorAll('input[name="radio"]');
 
+const btn_select_bamboo = document.querySelector(".select-bamboo");
+const btn_select_black = document.querySelector(".select-black");
+
 
 let Left_Values = {
     noreward: Infinity,
@@ -44,118 +47,88 @@ let Left_Values = {
     mahagony: 0
 }
 
-
 let total_backed = 89914;
-let progress_width;
 let total_backers = 5007;
 let days_left = 56; /*TODO:*/
 
-// let bamboo_left = 101;
-// let black_left = 64;
-// let mahagony_left = 0;
 
-/*---------------RADIO BUTTONS-----------*/
-
-
-/*PRVI NACIN - radi*/
-
-// let selectedValue;
-
-// selection_modal.onclick = function() {
-
-//     for (const rb of rbs) {
-//         if (rb.checked) {
-//             selectedValue = rb.value;
-//         }
-//     }
-
-//     if (selectedValue) {
-//         document.querySelector(`.${selectedValue}`).classList.remove('visibility');
-//         document.querySelector(`.${selectedValue}-div`).classList.add('active');
-//     }
-
-
-//     console.log(selectedValue);
-// };
-
-/*proba*/
-// document.onclick = function() { console.log(selectedValue); }
-// let selectedValue2 = document.querySelector('input[name="radio"]:checked').value;
-// document.onclick = function() { console.log(selectedValue2); }
-
-
-/*DRUGI NACIN - radi*/
+let progress_width;
 let selectedValue;
+let unselectedValue;
 let amount_tmp;
 let active_btn;
 let tmp_min;
 
 
 
-const preventRefresh = function(event) {
-    event.preventDefault();
-}
+/*---------------RADIO BUTTONS-----------*/
 
 selection_modal.onclick = function() {
-
     for (const rb of rbs) {
         if (rb.checked) {
             selectedValue = rb.value;
-            if (!document.querySelector(`.${rb.value}-div`).classList.contains('out-of-stock')) {
-                document.querySelector(`.${selectedValue}`).classList.remove('visibility');
-                document.querySelector(`.${selectedValue}-div`).classList.add('active');
-                document.querySelector(`.${selectedValue}-btn`).classList.add('active-btn');
+            radio_checked(selectedValue);
 
-                active_btn = document.querySelector('.active-btn');
-                active_btn.onclick = function(event) {
-                    event.preventDefault();
-                    amount_tmp = Number(document.querySelector(`.input-${selectedValue}`).value);
-
-
-                    if (amount_tmp >= MIN_VALUES[selectedValue] && Left_Values[selectedValue] >= 1) {
-
-                        Left_Values[selectedValue] = Left_Values[selectedValue] - 1;
-                        total_backed = total_backed + amount_tmp;
-                        total_backers = total_backers + 1;
-                        progress_width = (100 * Math.min(total_backed, BACKED_MAX)) / BACKED_MAX;
-
-                        document.querySelector(`.input-${selectedValue}`).value = '';
-                        updateUI();
-
-                        closeSelectionModal();
-                        openSuccessModal();
-
-                        btnBookmark.classList.add("bookmarked");
-                        btnText.textContent = "Bookmarked";
-                        btnMobile.classList.add("bookmarked-mob");
-
-                    } else alert('WRONG INPUT');
-
-                }
-            }
         } else {
-            document.querySelector(`.${rb.value}`).classList.add('visibility');
-            document.querySelector(`.${rb.value}-div`).classList.remove('active');
-            document.querySelector(`.${rb.value}-btn`).classList.remove('active-btn');
+            unselectedValue = rb.value;
+            document.querySelector(`.${unselectedValue}`).classList.add('visibility');
+            document.querySelector(`.${unselectedValue}-div`).classList.remove('active');
+            document.querySelector(`.${unselectedValue}-btn`).classList.remove('active-btn');
         }
     }
 };
 
-/*---*/
+const radio_checked = function(selectedValue) {
+    if (!document.querySelector(`.${selectedValue}-div`).classList.contains('out-of-stock')) {
+        document.querySelector(`.${selectedValue}`).classList.remove('visibility');
+        document.querySelector(`.${selectedValue}-div`).classList.add('active');
+        document.querySelector(`.${selectedValue}-btn`).classList.add('active-btn');
+        active_btn = document.querySelector('.active-btn');
+        active_btn.onclick = function(event) {
+            event.preventDefault();
+            amount_tmp = Number(document.querySelector(`.input-${selectedValue}`).value);
+            if (amount_tmp >= MIN_VALUES[selectedValue] && Left_Values[selectedValue] >= 1) {
+                Left_Values[selectedValue] = Left_Values[selectedValue] - 1;
+                total_backed = total_backed + amount_tmp;
+                total_backers = total_backers + 1;
+                progress_width = (100 * Math.min(total_backed, BACKED_MAX)) / BACKED_MAX;
+                document.querySelector(`.input-${selectedValue}`).value = '';
+                updateUI();
+                closeSelectionModal();
+                openSuccessModal();
+                btnBookmark.classList.add("bookmarked");
+                btnText.textContent = "Bookmarked";
+                btnMobile.classList.add("bookmarked-mob");
+            } else alert('WRONG INPUT');
+        }
+    }
+}
+
+/*---------------------------*/
+
+btn_select_bamboo.onclick = function() {
+    openSelectionModal()
+    selectedValue = 'bamboo';
+    radio_checked(selectedValue);
+    document.getElementById("radio-bamboo").checked = true;
+}
+
+btn_select_black.onclick = function() {
+    openSelectionModal()
+    selectedValue = 'black';
+    radio_checked(selectedValue);
+    document.getElementById("radio-black").checked = true;
+}
+
+/*-----------------------*/
 const removeActive = function(selectedValue) {
     if (selectedValue) {
         document.querySelector(`.${selectedValue}`).classList.add('visibility');
         document.querySelector(`.${selectedValue}-div`).classList.remove('active');
         document.querySelector(`.${selectedValue}-btn`).classList.remove('active-btn');
-
-        //  document.querySelector(`.${selectedValue}-check`).classList.add('unchecked');
-        // console.log(document.querySelector(`.${selectedValue}-check`), document.querySelector('.unchecked'));
-
-
+        document.getElementById(`radio-${selectedValue}`).checked = false;
     }
-
 };
-
 
 /*---------------MODALS-----------*/
 const openSelectionModal = function() {
@@ -172,9 +145,7 @@ const openSuccessModal = function() {
 const closeSelectionModal = function() {
     selection_modal.classList.add("hidden");
     overlay.classList.add("hidden");
-
     removeActive(selectedValue);
-
 
 };
 
@@ -228,16 +199,6 @@ document.addEventListener("keydown", function(e) {
 
 /*------------------------------------*/
 /*BOOKMARK*/
-// btnBookmark.addEventListener("click", function() {
-//     btnBookmark.classList.toggle("bookmarked");
-//     if (btnBookmark.classList.contains("bookmarked"))
-//         btnText.textContent = "Bookmarked";
-//     else btnText.textContent = "Bookmark";
-// });
-
-// btnMobile.addEventListener("click", function() {
-//     btnMobile.classList.toggle("bookmarked-mob");
-// });
 
 const bookmarking = function() {
     btnBookmark.classList.toggle("bookmarked");
@@ -272,19 +233,6 @@ const updateUI = function() {
         labelTotalBacked.textContent = formatterCurrency.format(total_backed);
         labelTotalBackers.textContent = formatterNumber.format(total_backers);
 
-
-        // labelBambooLeft.forEach(function(item) {
-        //     item.textContent = bamboo_left;
-        // });
-        // labelBlackLeft.forEach(function(item) {
-        //     item.textContent = black_left;
-        // });
-        // labelMahagonyLeft.forEach(function(item) {
-        //     item.textContent = mahagony_left;
-        // });
-
-
-
         labelBambooLeft.forEach(function(item) {
             item.textContent = Left_Values['bamboo'];
         });
@@ -294,7 +242,9 @@ const updateUI = function() {
         labelMahagonyLeft.forEach(function(item) {
             item.textContent = Left_Values['mahagony'];
         });
-
-
     }
     /*------------------------------------*/
+
+const preventRefresh = function(event) {
+    event.preventDefault();
+}
