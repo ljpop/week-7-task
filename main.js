@@ -109,12 +109,14 @@ const radio_checked = function(selectedValue) {
 btn_select_bamboo.onclick = function() {
     openSelectionModal()
     selectedValue = 'bamboo';
+    window.scrollTo(0, document.getElementById('bamboo-jump').offsetTop);
     radio_checked(selectedValue);
     document.getElementById("radio-bamboo").checked = true;
 }
 
 btn_select_black.onclick = function() {
-    openSelectionModal()
+    openSelectionModal();
+    window.scrollTo(0, document.getElementById('black-jump').offsetTop);
     selectedValue = 'black';
     radio_checked(selectedValue);
     document.getElementById("radio-black").checked = true;
