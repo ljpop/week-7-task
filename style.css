@@ -93,11 +93,6 @@ main {
     background-color: white;
 }
 
-.aside-section {
-    position: relative;
-    left: 35px;
-}
-
 .main-header h1 {
     padding-top: 56px;
     text-align: center;
